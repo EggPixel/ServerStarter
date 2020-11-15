@@ -1,5 +1,10 @@
 @echo off
-rem 
+rem 可自行复制
+rem 复制/使用前，你需要阅读以下条款
+rem 1.禁止在此源码的基础下重新构建脚本
+rem 2.你可以适当借鉴一些代码来完成你的程序
+rem 3.请在转发此程序时标明原作者
+rem 4.你可以随便转发，但是要标明原作者
 if exist dashen.donotremove goto getinfo
 if exist xinshou.donotremove goto getinfos
 goto uselevel
