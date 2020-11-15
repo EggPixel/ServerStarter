@@ -1,153 +1,120 @@
-::[Bat To Exe Converter]
-::
-::YAwzoRdxOk+EWAjk
-::fBw5plQjdCyDJGyX8VAjFD5ZSRaDMG+fAbIgzO3o5P6IsnE5W/UxdIDa3ojccLJDuxS1Icd9gygPyJJfWiRdfwGyZww7p1FMs3C6YZPSugzuKg==
-::YAwzuBVtJxjWCl3EqQJgSA==
-::ZR4luwNxJguZRRnk
-::Yhs/ulQjdF+5
-::cxAkpRVqdFKZSDk=
-::cBs/ulQjdF+5
-::ZR41oxFsdFKZSDk=
-::eBoioBt6dFKZSDk=
-::cRo6pxp7LAbNWATEpCI=
-::egkzugNsPRvcWATEpCI=
-::dAsiuh18IRvcCxnZtBJQ
-::cRYluBh/LU+EWAnk
-::YxY4rhs+aU+JeA==
-::cxY6rQJ7JhzQF1fEqQJQ
-::ZQ05rAF9IBncCkqN+0xwdVs0
-::ZQ05rAF9IAHYFVzEqQJQ
-::eg0/rx1wNQPfEVWB+kM9LVsJDGQ=
-::fBEirQZwNQPfEVWB+kM9LVsJDGQ=
-::cRolqwZ3JBvQF1fEqQJQ
-::dhA7uBVwLU+EWDk=
-::YQ03rBFzNR3SWATElA==
-::dhAmsQZ3MwfNWATElA==
-::ZQ0/vhVqMQ3MEVWAtB9wSA==
-::Zg8zqx1/OA3MEVWAtB9wSA==
-::dhA7pRFwIByZRRnk
-::Zh4grVQjdCeDJGqB5lQ1OidASReWAO1G6zD2KW0CJ293bcj3nGfGsN2Vi/qLOOVz
-::YB416Ek+ZG8=
-::
-::
-::978f952a14a936cc963da21a135fa983
 @echo off
 rem 
 if exist dashen.donotremove goto getinfo
 if exist xinshou.donotremove goto getinfos
 goto uselevel
 : uselevel
-echo ÇëÑ¡ÔñÄãµÄ¼¶±ð:
-echo 1Îª´óÉñ£¬2ÎªÃÈÐÂ
-set /p level=ÇëÊäÈë:
+echo è¯·é€‰æ‹©ä½ çš„çº§åˆ«:
+echo 1ä¸ºå¤§ç¥žï¼Œ2ä¸ºèŒæ–°
+set /p level=è¯·è¾“å…¥:
 if "%level%"=="1" goto createconfig
 if "%level%"=="2" goto createsetting
-echo ÊäÈë´íÎó£¬ÇëÖØÐÂÊäÈë!
+echo è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥!
 goto uselevel
 : createconfig
-echo ÄúÑ¡ÔñµÄÎª´óÉñ¼¶±ð
-echo ´´½¨ÎÄ¼þ...
-echo Èç¹ûÒª¸ü»»¼¶±ð£¬ÇëÉ¾³ý´ËÎÄ¼þ! > ./dashen.donotremove
+echo æ‚¨é€‰æ‹©çš„ä¸ºå¤§ç¥žçº§åˆ«
+echo åˆ›å»ºæ–‡ä»¶...
+echo å¦‚æžœè¦æ›´æ¢çº§åˆ«ï¼Œè¯·åˆ é™¤æ­¤æ–‡ä»¶! > ./dashen.donotremove
 echo. > ./config.yml
 @mshta http://bathome.net/s/hta/ type('config.yml') >config.yml
-echo #ÇëÊÊµ±ÐÞ¸Ä >> ./config.yml
-echo ·þÎñ¶ËÃû³Æ=Server.jar >>./config.yml
-echo ×î´óÄÚ´æ=4G >> ./config.yml
-echo #Ä¬ÈÏ4G >> ./config.yml
-echo ×îÐ¡ÄÚ´æ=4G >> ./config.yml
-echo #Ä¬ÈÏ4G >> ./config.yml
-echo ÊÇ·ñ×Ô¶¯ÖØÆô=True >> ./config.yml
-echo #ÇëÌîÐ´True»òÕßFalse >> ./config.yml
-echo ÓÅ»¯²ÎÊý= >> ./config.yml
-echo ÊÇ·ñ²»Òªjava×Ô´ø¿ØÖÆÌ¨=nogui >> ./config.yml
-echo #¼´nogui²ÎÊý,¿ªÆôÌîÐ´nogui >> ./config.yml
-echo ×Ô¶¨Òå´°¿Ú±êÌâ=By EmeraldEgg >> ./config.yml
-echo Éú³ÉÎÄ¼þ³É¹¦!Çë×ÔÐÐÅäÖÃ
+echo #è¯·é€‚å½“ä¿®æ”¹ >> ./config.yml
+echo æœåŠ¡ç«¯åç§°=Server.jar >>./config.yml
+echo æœ€å¤§å†…å­˜=4G >> ./config.yml
+echo #é»˜è®¤4G >> ./config.yml
+echo æœ€å°å†…å­˜=4G >> ./config.yml
+echo #é»˜è®¤4G >> ./config.yml
+echo æ˜¯å¦è‡ªåŠ¨é‡å¯=True >> ./config.yml
+echo #è¯·å¡«å†™Trueæˆ–è€…False >> ./config.yml
+echo ä¼˜åŒ–å‚æ•°= >> ./config.yml
+echo æ˜¯å¦ä¸è¦javaè‡ªå¸¦æŽ§åˆ¶å°=nogui >> ./config.yml
+echo #å³noguiå‚æ•°,å¼€å¯å¡«å†™nogui >> ./config.yml
+echo è‡ªå®šä¹‰çª—å£æ ‡é¢˜=By EmeraldEgg >> ./config.yml
+echo ç”Ÿæˆæ–‡ä»¶æˆåŠŸ!è¯·è‡ªè¡Œé…ç½®
 ping 127.0.0.1 /n 4 >nul
 exit
 : createsetting
-echo ÄúÑ¡ÔñµÄÎªÐÂÊÖ¼¶±ð
-echo ´´½¨ÎÄ¼þ...
-echo Èç¹ûÒª¸ü»»¼¶±ð£¬ÇëÉ¾³ý´ËÎÄ¼þ! > ./xinshou.donotremove
-echo. > ./ÉèÖÃ.txt
-@mshta http://bathome.net/s/hta/ type('ÉèÖÃ.txt') >ÉèÖÃ.txt
-echo #ÇëÊÊµ±ÐÞ¸Ä >> ./ÉèÖÃ.txt
-echo ·þÎñ¶ËÃû³Æ=Server.jar >>./ÉèÖÃ.txt
-echo ×î´óÄÚ´æ=4G >> ./ÉèÖÃ.txt
-echo #Ä¬ÈÏ4G >> ./ÉèÖÃ.txt
-echo ×îÐ¡ÄÚ´æ=4G >> ./ÉèÖÃ.txt
-echo #Ä¬ÈÏ4G >> ./ÉèÖÃ.txt
-echo ÊÇ·ñ×Ô¶¯ÖØÆô=True >> ./ÉèÖÃ.txt
-echo #ÇëÌîÐ´True»òÕßFalse >> ./ÉèÖÃ.txt
-echo ×Ô¶¨Òå´°¿Ú±êÌâ=By EmeraldEgg >> ./ÉèÖÃ.txt
-echo Éú³ÉÎÄ¼þ³É¹¦!Çë×ÔÐÐÅäÖÃ
+echo æ‚¨é€‰æ‹©çš„ä¸ºæ–°æ‰‹çº§åˆ«
+echo åˆ›å»ºæ–‡ä»¶...
+echo å¦‚æžœè¦æ›´æ¢çº§åˆ«ï¼Œè¯·åˆ é™¤æ­¤æ–‡ä»¶! > ./xinshou.donotremove
+echo. > ./è®¾ç½®.txt
+@mshta http://bathome.net/s/hta/ type('è®¾ç½®.txt') >è®¾ç½®.txt
+echo #è¯·é€‚å½“ä¿®æ”¹ >> ./è®¾ç½®.txt
+echo æœåŠ¡ç«¯åç§°=Server.jar >>./è®¾ç½®.txt
+echo æœ€å¤§å†…å­˜=4G >> ./è®¾ç½®.txt
+echo #é»˜è®¤4G >> ./è®¾ç½®.txt
+echo æœ€å°å†…å­˜=4G >> ./è®¾ç½®.txt
+echo #é»˜è®¤4G >> ./è®¾ç½®.txt
+echo æ˜¯å¦è‡ªåŠ¨é‡å¯=True >> ./è®¾ç½®.txt
+echo #è¯·å¡«å†™Trueæˆ–è€…False >> ./è®¾ç½®.txt
+echo è‡ªå®šä¹‰çª—å£æ ‡é¢˜=By EmeraldEgg >> ./è®¾ç½®.txt
+echo ç”Ÿæˆæ–‡ä»¶æˆåŠŸ!è¯·è‡ªè¡Œé…ç½®
 ping 127.0.0.1 /n 4 >nul
 exit
 : getinfo
-if exist *.jar (echo ¼´½«¿ª·þ...) else start https://yivesmirror.com/downloads/paper & exit
-::´óÉñ
+if exist *.jar (echo å³å°†å¼€æœ...) else start https://yivesmirror.com/downloads/paper & exit
+::å¤§ç¥ž
 for /f "tokens=1,* delims==" %%a in (
-'findstr "·þÎñ¶ËÃû³Æ=" "config.yml"'
+'findstr "æœåŠ¡ç«¯åç§°=" "config.yml"'
 ) do (
 set Name=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×î´óÄÚ´æ=" "config.yml"'
+'findstr "æœ€å¤§å†…å­˜=" "config.yml"'
 ) do (
 set Xmx=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×îÐ¡ÄÚ´æ=" "config.yml"'
+'findstr "æœ€å°å†…å­˜=" "config.yml"'
 ) do (
 set Xms=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "ÊÇ·ñ×Ô¶¯ÖØÆô=" "config.yml"'
+'findstr "æ˜¯å¦è‡ªåŠ¨é‡å¯=" "config.yml"'
 ) do (
 set Reboot=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×Ô¶¨Òå´°¿Ú±êÌâ=" "config.yml"'
+'findstr "è‡ªå®šä¹‰çª—å£æ ‡é¢˜=" "config.yml"'
 ) do (
 set Title=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "ÊÇ·ñ²»Òªjava×Ô´ø¿ØÖÆÌ¨=" "config.yml"'
+'findstr "æ˜¯å¦ä¸è¦javaè‡ªå¸¦æŽ§åˆ¶å°=" "config.yml"'
 ) do (
 set nogui=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "ÓÅ»¯²ÎÊý=" "config.yml"'
+'findstr "ä¼˜åŒ–å‚æ•°=" "config.yml"'
 ) do (
 set YouHua=%%b
 )
 title %title%
 goto start
 : getinfos
-if exist *.jar (echo ¼´½«¿ª·þ...) else start https://yivesmirror.com/downloads/paper & exit
-::ÐÂÊÖ
+if exist *.jar (echo å³å°†å¼€æœ...) else start https://yivesmirror.com/downloads/paper & exit
+::æ–°æ‰‹
 for /f "tokens=1,* delims==" %%a in (
-'findstr "·þÎñ¶ËÃû³Æ=" "ÉèÖÃ.txt"'
+'findstr "æœåŠ¡ç«¯åç§°=" "è®¾ç½®.txt"'
 ) do (
 set Name=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×î´óÄÚ´æ=" "ÉèÖÃ.txt"'
+'findstr "æœ€å¤§å†…å­˜=" "è®¾ç½®.txt"'
 ) do (
 set Xmx=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×îÐ¡ÄÚ´æ=" "ÉèÖÃ.txt"'
+'findstr "æœ€å°å†…å­˜=" "è®¾ç½®.txt"'
 ) do (
 set Xms=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "ÊÇ·ñ×Ô¶¯ÖØÆô=" "ÉèÖÃ.txt"'
+'findstr "æ˜¯å¦è‡ªåŠ¨é‡å¯=" "è®¾ç½®.txt"'
 ) do (
 set Reboot=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×Ô¶¨Òå´°¿Ú±êÌâ=" "ÉèÖÃ.txt"'
+'findstr "è‡ªå®šä¹‰çª—å£æ ‡é¢˜=" "è®¾ç½®.txt"'
 ) do (
 set Title=%%b
 )
@@ -157,11 +124,11 @@ title %title%
 goto start
 : start
 set count=1
-echo ³É¹¦¶ÁÈ¡ÐÅÏ¢:
-echo ×î´óÄÚ´æ=%Xmx%
-echo ×îÐ¡ÄÚ´æ=%Xms%
-echo ·þÎñÆ÷ÊÇ·ñÖØÆô=%Reboot%
-echo ·þÎñ¶ËÃû³Æ=%Name%
+echo æˆåŠŸè¯»å–ä¿¡æ¯:
+echo æœ€å¤§å†…å­˜=%Xmx%
+echo æœ€å°å†…å­˜=%Xms%
+echo æœåŠ¡å™¨æ˜¯å¦é‡å¯=%Reboot%
+echo æœåŠ¡ç«¯åç§°=%Name%
 echo ==============================
 : javastart
 java -Xmx%Xmx% -Xms%Xms% %YouHua% -jar %Name% %nogui%
@@ -169,5 +136,5 @@ if "%Reboot%" == "False" pause&exit
 set /a count=%count%+1
 echo %count%
 ping 127.0.0.1 /n 4 >nul
-if %count% == 10 echo ¼ì²âµ½ÖØÆô´ÎÊý¹ý¶à£¬×Ô¶¯¹Ø±Õ´Ë³ÌÐò &ping localhost /n 4 >nul &exit
+if %count% == 10 echo æ£€æµ‹åˆ°é‡å¯æ¬¡æ•°è¿‡å¤šï¼Œè‡ªåŠ¨å…³é—­æ­¤ç¨‹åº &ping localhost /n 4 >nul &exit
 goto javastart
