@@ -1,121 +1,126 @@
 @echo off
-rem 
-title »¶Ó­Ê¹ÓÃ
+rem å¯è‡ªè¡Œå¤åˆ¶
+rem å¤åˆ¶/ä½¿ç”¨å‰ï¼Œä½ éœ€è¦é˜…è¯»ä»¥ä¸‹æ¡æ¬¾
+rem 1.ç¦æ­¢åœ¨æ­¤æºç çš„åŸºç¡€ä¸‹é‡æ–°æ„å»ºè„šæœ¬
+rem 2.ä½ å¯ä»¥é€‚å½“å€Ÿé‰´ä¸€äº›ä»£ç æ¥å®Œæˆä½ çš„ç¨‹åº
+rem 3.è¯·åœ¨è½¬å‘æ­¤ç¨‹åºæ—¶æ ‡æ˜åŸä½œè€…
+rem 4.ä½ å¯ä»¥éšä¾¿è½¬å‘ï¼Œä½†æ˜¯è¦æ ‡æ˜åŸä½œè€…
+title æ¬¢è¿ä½¿ç”¨
 if exist dashen.donotremove goto getinfo
 if exist xinshou.donotremove goto getinfos
 goto uselevel
 : uselevel
-echo ÇëÑ¡ÔñÄãµÄ¼¶±ğ:
-echo 1Îª´óÉñ£¬2ÎªÃÈĞÂ
-set /p level=ÇëÊäÈë:
+echo è¯·é€‰æ‹©ä½ çš„çº§åˆ«:
+echo 1ä¸ºå¤§ç¥ï¼Œ2ä¸ºèŒæ–°
+set /p level=è¯·è¾“å…¥:
 if "%level%"=="1" goto createconfig
 if "%level%"=="2" goto createsetting
-echo ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë!
+echo è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥!
 goto uselevel
 : createconfig
-echo ÄúÑ¡ÔñµÄÎª´óÉñ¼¶±ğ
-echo ´´½¨ÎÄ¼ş...
-echo Èç¹ûÒª¸ü»»¼¶±ğ£¬ÇëÉ¾³ı´ËÎÄ¼ş! > ./dashen.donotremove
+echo æ‚¨é€‰æ‹©çš„ä¸ºå¤§ç¥çº§åˆ«
+echo åˆ›å»ºæ–‡ä»¶...
+echo å¦‚æœè¦æ›´æ¢çº§åˆ«ï¼Œè¯·åˆ é™¤æ­¤æ–‡ä»¶! > ./dashen.donotremove
 echo. > ./config.yml
 @mshta http://bathome.net/s/hta/ type('config.yml') >config.yml
-echo #ÇëÊÊµ±ĞŞ¸Ä >> ./config.yml
-echo ·şÎñ¶ËÃû³Æ=Server.jar >>./config.yml
-echo ×î´óÄÚ´æ=4G >> ./config.yml
-echo #Ä¬ÈÏ4G >> ./config.yml
-echo ×îĞ¡ÄÚ´æ=4G >> ./config.yml
-echo #Ä¬ÈÏ4G >> ./config.yml
-echo ÊÇ·ñ×Ô¶¯ÖØÆô=True >> ./config.yml
-echo #ÇëÌîĞ´True»òÕßFalse >> ./config.yml
-echo ÓÅ»¯²ÎÊı= >> ./config.yml
-echo ÊÇ·ñ²»Òªjava×Ô´ø¿ØÖÆÌ¨=nogui >> ./config.yml
-echo #¼´nogui²ÎÊı,¿ªÆôÌîĞ´nogui >> ./config.yml
-echo ×Ô¶¨Òå´°¿Ú±êÌâ=By EmeraldEgg >> ./config.yml
-echo Éú³ÉÎÄ¼ş³É¹¦!Çë×ÔĞĞÅäÖÃ
+echo #è¯·é€‚å½“ä¿®æ”¹ >> ./config.yml
+echo æœåŠ¡ç«¯åç§°=Server.jar >>./config.yml
+echo æœ€å¤§å†…å­˜=4G >> ./config.yml
+echo #é»˜è®¤4G >> ./config.yml
+echo æœ€å°å†…å­˜=4G >> ./config.yml
+echo #é»˜è®¤4G >> ./config.yml
+echo æ˜¯å¦è‡ªåŠ¨é‡å¯=True >> ./config.yml
+echo #è¯·å¡«å†™Trueæˆ–è€…False >> ./config.yml
+echo ä¼˜åŒ–å‚æ•°= >> ./config.yml
+echo æ˜¯å¦ä¸è¦javaè‡ªå¸¦æ§åˆ¶å°=nogui >> ./config.yml
+echo #å³noguiå‚æ•°,å¼€å¯å¡«å†™nogui >> ./config.yml
+echo è‡ªå®šä¹‰çª—å£æ ‡é¢˜=By EmeraldEgg >> ./config.yml
+echo ç”Ÿæˆæ–‡ä»¶æˆåŠŸ!è¯·è‡ªè¡Œé…ç½®
 ping 127.0.0.1 /n 4 >nul
 exit
 : createsetting
-echo ÄúÑ¡ÔñµÄÎªĞÂÊÖ¼¶±ğ
-echo ´´½¨ÎÄ¼ş...
-echo Èç¹ûÒª¸ü»»¼¶±ğ£¬ÇëÉ¾³ı´ËÎÄ¼ş! > ./xinshou.donotremove
-echo. > ./ÉèÖÃ.txt
-@mshta http://bathome.net/s/hta/ type('ÉèÖÃ.txt') >ÉèÖÃ.txt
-echo #ÇëÊÊµ±ĞŞ¸Ä >> ./ÉèÖÃ.txt
-echo ·şÎñ¶ËÃû³Æ=Server.jar >>./ÉèÖÃ.txt
-echo ×î´óÄÚ´æ=4G >> ./ÉèÖÃ.txt
-echo #Ä¬ÈÏ4G >> ./ÉèÖÃ.txt
-echo ×îĞ¡ÄÚ´æ=4G >> ./ÉèÖÃ.txt
-echo #Ä¬ÈÏ4G >> ./ÉèÖÃ.txt
-echo ÊÇ·ñ×Ô¶¯ÖØÆô=True >> ./ÉèÖÃ.txt
-echo #ÇëÌîĞ´True»òÕßFalse >> ./ÉèÖÃ.txt
-echo ×Ô¶¨Òå´°¿Ú±êÌâ=By EmeraldEgg >> ./ÉèÖÃ.txt
-echo Éú³ÉÎÄ¼ş³É¹¦!Çë×ÔĞĞÅäÖÃ
+echo æ‚¨é€‰æ‹©çš„ä¸ºæ–°æ‰‹çº§åˆ«
+echo åˆ›å»ºæ–‡ä»¶...
+echo å¦‚æœè¦æ›´æ¢çº§åˆ«ï¼Œè¯·åˆ é™¤æ­¤æ–‡ä»¶! > ./xinshou.donotremove
+echo. > ./è®¾ç½®.txt
+@mshta http://bathome.net/s/hta/ type('è®¾ç½®.txt') >è®¾ç½®.txt
+echo #è¯·é€‚å½“ä¿®æ”¹ >> ./è®¾ç½®.txt
+echo æœåŠ¡ç«¯åç§°=Server.jar >>./è®¾ç½®.txt
+echo æœ€å¤§å†…å­˜=4G >> ./è®¾ç½®.txt
+echo #é»˜è®¤4G >> ./è®¾ç½®.txt
+echo æœ€å°å†…å­˜=4G >> ./è®¾ç½®.txt
+echo #é»˜è®¤4G >> ./è®¾ç½®.txt
+echo æ˜¯å¦è‡ªåŠ¨é‡å¯=True >> ./è®¾ç½®.txt
+echo #è¯·å¡«å†™Trueæˆ–è€…False >> ./è®¾ç½®.txt
+echo è‡ªå®šä¹‰çª—å£æ ‡é¢˜=By EmeraldEgg >> ./è®¾ç½®.txt
+echo ç”Ÿæˆæ–‡ä»¶æˆåŠŸ!è¯·è‡ªè¡Œé…ç½®
 ping 127.0.0.1 /n 4 >nul
 exit
 : getinfo
-if exist *.jar (echo ¼´½«¿ª·ş...) else goto download
-::´óÉñ
+if exist *.jar (echo å³å°†å¼€æœ...) else goto download
+::å¤§ç¥
 for /f "tokens=1,* delims==" %%a in (
-'findstr "·şÎñ¶ËÃû³Æ=" "config.yml"'
+'findstr "æœåŠ¡ç«¯åç§°=" "config.yml"'
 ) do (
 set Name=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×î´óÄÚ´æ=" "config.yml"'
+'findstr "æœ€å¤§å†…å­˜=" "config.yml"'
 ) do (
 set Xmx=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×îĞ¡ÄÚ´æ=" "config.yml"'
+'findstr "æœ€å°å†…å­˜=" "config.yml"'
 ) do (
 set Xms=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "ÊÇ·ñ×Ô¶¯ÖØÆô=" "config.yml"'
+'findstr "æ˜¯å¦è‡ªåŠ¨é‡å¯=" "config.yml"'
 ) do (
 set Reboot=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×Ô¶¨Òå´°¿Ú±êÌâ=" "config.yml"'
+'findstr "è‡ªå®šä¹‰çª—å£æ ‡é¢˜=" "config.yml"'
 ) do (
 set Title=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "ÊÇ·ñ²»Òªjava×Ô´ø¿ØÖÆÌ¨=" "config.yml"'
+'findstr "æ˜¯å¦ä¸è¦javaè‡ªå¸¦æ§åˆ¶å°=" "config.yml"'
 ) do (
 set nogui=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "ÓÅ»¯²ÎÊı=" "config.yml"'
+'findstr "ä¼˜åŒ–å‚æ•°=" "config.yml"'
 ) do (
 set YouHua=%%b
 )
 title %title%
 goto start
 : getinfos
-if exist *.jar (echo ¼´½«¿ª·ş...) else goto download
-::ĞÂÊÖ
+if exist *.jar (echo å³å°†å¼€æœ...) else goto download
+::æ–°æ‰‹
 for /f "tokens=1,* delims==" %%a in (
-'findstr "·şÎñ¶ËÃû³Æ=" "ÉèÖÃ.txt"'
+'findstr "æœåŠ¡ç«¯åç§°=" "è®¾ç½®.txt"'
 ) do (
 set Name=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×î´óÄÚ´æ=" "ÉèÖÃ.txt"'
+'findstr "æœ€å¤§å†…å­˜=" "è®¾ç½®.txt"'
 ) do (
 set Xmx=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×îĞ¡ÄÚ´æ=" "ÉèÖÃ.txt"'
+'findstr "æœ€å°å†…å­˜=" "è®¾ç½®.txt"'
 ) do (
 set Xms=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "ÊÇ·ñ×Ô¶¯ÖØÆô=" "ÉèÖÃ.txt"'
+'findstr "æ˜¯å¦è‡ªåŠ¨é‡å¯=" "è®¾ç½®.txt"'
 ) do (
 set Reboot=%%b
 )
 for /f "tokens=1,* delims==" %%a in (
-'findstr "×Ô¶¨Òå´°¿Ú±êÌâ=" "ÉèÖÃ.txt"'
+'findstr "è‡ªå®šä¹‰çª—å£æ ‡é¢˜=" "è®¾ç½®.txt"'
 ) do (
 set Title=%%b
 )
@@ -125,43 +130,49 @@ title %title%
 goto start
 : start
 set count=1
-echo ³É¹¦¶ÁÈ¡ĞÅÏ¢:
-echo ×î´óÄÚ´æ=%Xmx%
-echo ×îĞ¡ÄÚ´æ=%Xms%
-echo ·şÎñÆ÷ÊÇ·ñÖØÆô=%Reboot%
-echo ·şÎñ¶ËÃû³Æ=%Name%
+echo æˆåŠŸè¯»å–ä¿¡æ¯:
+echo æœ€å¤§å†…å­˜=%Xmx%
+echo æœ€å°å†…å­˜=%Xms%
+echo æœåŠ¡å™¨æ˜¯å¦é‡å¯=%Reboot%
+echo æœåŠ¡ç«¯åç§°=%Name%
 echo ==============================
 : javastart
 java -Xmx%Xmx% -Xms%Xms% %YouHua% -jar %Name% %nogui%
 if "%Reboot%" == "False" pause&exit
 set /a count=%count%+1
 ping 127.0.0.1 /n 4 >nul
-if %count% == 10 echo ¼ì²âµ½ÖØÆô´ÎÊı¹ı¶à£¬×Ô¶¯¹Ø±Õ´Ë³ÌĞò &ping localhost /n 4 >nul &exit
+if %count% == 10 echo æ£€æµ‹åˆ°é‡å¯æ¬¡æ•°è¿‡å¤šï¼Œè‡ªåŠ¨å…³é—­æ­¤ç¨‹åº &ping localhost /n 4 >nul &exit
 goto javastart
 : download
-title Î´¼ì²âµ½·şÎñ¶Ë
+title æœªæ£€æµ‹åˆ°æœåŠ¡ç«¯
 color 1a
-echo Î´¼ì²âµ½·şÎñ¶Ë
-echo ÊÇ·ñ×Ô¶¯ÏÂÔØ·şÎñ¶Ë?
-echo [Y/N](YÎªÊÇ,NÎª·ñ£¬Çø·Ö´óĞ¡Ğ´)
+echo æœªæ£€æµ‹åˆ°æœåŠ¡ç«¯
+echo æ˜¯å¦è‡ªåŠ¨ä¸‹è½½æœåŠ¡ç«¯?
+echo [Y/N](Yä¸ºæ˜¯,Nä¸ºå¦ï¼ŒåŒºåˆ†å¤§å°å†™)
 set /p auto=
 cls
 : downloadsel
 if %auto%=="N" exit
 echo ========================
-echo ÇëÊäÈë¶ÔÓ¦Êı×ÖÀ´ÏÂÔØ·şÎñ¶Ë:
-echo 1.Paper1.16.4 #279 ¹Ù·½ÏÂÔØÔ´
-echo 2.Paper1.16.3 #253 ¹Ù·½ÏÂÔØÔ´
-echo 3.Paper1.16.2 #189 ¹Ù·½ÏÂÔØÔ´
-echo 4.Paper1.16.1 #138 ¹Ù·½ÏÂÔØÔ´
-echo 5.ÎÒ×Ô¼ºÏÂÔØ
+echo è¯·è¾“å…¥å¯¹åº”æ•°å­—æ¥ä¸‹è½½æœåŠ¡ç«¯:
+echo 1.Paper1.16.4 #279 å®˜æ–¹ä¸‹è½½æº
+echo 2.Paper1.16.3 #253 å®˜æ–¹ä¸‹è½½æº
+echo 3.Paper1.16.2 #189 å®˜æ–¹ä¸‹è½½æº
+echo 4.Paper1.16.1 #138 å®˜æ–¹ä¸‹è½½æº
+echo 5.æˆ‘è‡ªå·±ä¸‹è½½
 set downloaddir=%cd%\Server.jar
 echo ========================
-set /p downloads=ÇëÊäÈë¶ÔÓ¦Êı×Ö:
-title ÕıÔÚÏÂÔØ,ÇëÎğ¹Ø±Õ´Ë½çÃæ!
-if %downloads%==1 bitsadmin /transfer "·şÎñ¶ËÏÂÔØÖĞ£¬Çë²»Òª¹Ø±Õ" /download /priority normal "https://papermc.io/ci/job/Paper-1.16/lastSuccessfulBuild/artifact/paperclip-279.jar" "%downloaddir%" &exit
-if %downloads%==2 bitsadmin /transfer "·şÎñ¶ËÏÂÔØÖĞ£¬Çë²»Òª¹Ø±Õ" /download /priority normal "https://papermc.io/ci/job/Paper-1.16/253/artifact/paperclip-253.jar" "%downloaddir%" &exit
-if %downloads%==3 bitsadmin /transfer "·şÎñ¶ËÏÂÔØÖĞ£¬Çë²»Òª¹Ø±Õ" /download /priority normal "https://papermc.io/ci/job/Paper-1.16/189/artifact/paperclip-189.jar" "%downloaddir%" &exit
-if %downloads%==4 bitsadmin /transfer "·şÎñ¶ËÏÂÔØÖĞ£¬Çë²»Òª¹Ø±Õ" /download /priority normal "https://papermc.io/ci/job/Paper-1.16/138/artifact/paperclip-138.jar" "%downloaddir%" &exit
+set /p downloads=è¯·è¾“å…¥å¯¹åº”æ•°å­—:
+title æ­£åœ¨ä¸‹è½½,è¯·å‹¿å…³é—­æ­¤ç•Œé¢!
+if %downloads%==1 bitsadmin /transfer "æœåŠ¡ç«¯ä¸‹è½½ä¸­ï¼Œè¯·ä¸è¦å…³é—­" /download /priority normal "https://papermc.io/ci/job/Paper-1.16/lastSuccessfulBuild/artifact/paperclip-279.jar" "%downloaddir%" &exit
+if %downloads%==2 bitsadmin /transfer "æœåŠ¡ç«¯ä¸‹è½½ä¸­ï¼Œè¯·ä¸è¦å…³é—­" /download /priority normal "https://papermc.io/ci/job/Paper-1.16/253/artifact/paperclip-253.jar" "%downloaddir%" &exit
+if %downloads%==3 bitsadmin /transfer "æœåŠ¡ç«¯ä¸‹è½½ä¸­ï¼Œè¯·ä¸è¦å…³é—­" /download /priority normal "https://papermc.io/ci/job/Paper-1.16/189/artifact/paperclip-189.jar" "%downloaddir%" &exit
+if %downloads%==4 bitsadmin /transfer "æœåŠ¡ç«¯ä¸‹è½½ä¸­ï¼Œè¯·ä¸è¦å…³é—­" /download /priority normal "https://papermc.io/ci/job/Paper-1.16/138/artifact/paperclip-138.jar" "%downloaddir%" &exit
 if %downloads%==5 exit
 goto downloadsel
+rem å¯è‡ªè¡Œå¤åˆ¶
+rem å¤åˆ¶/ä½¿ç”¨å‰ï¼Œä½ éœ€è¦é˜…è¯»ä»¥ä¸‹æ¡æ¬¾
+rem 1.ç¦æ­¢åœ¨æ­¤æºç çš„åŸºç¡€ä¸‹é‡æ–°æ„å»ºè„šæœ¬
+rem 2.ä½ å¯ä»¥é€‚å½“å€Ÿé‰´ä¸€äº›ä»£ç æ¥å®Œæˆä½ çš„ç¨‹åº
+rem 3.è¯·åœ¨è½¬å‘æ­¤ç¨‹åºæ—¶æ ‡æ˜åŸä½œè€…
+rem 4.ä½ å¯ä»¥éšä¾¿è½¬å‘ï¼Œä½†æ˜¯è¦æ ‡æ˜åŸä½œè€…
