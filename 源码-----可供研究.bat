@@ -14,6 +14,7 @@ echo 1为大神，2为萌新
 set /p level=请输入:
 if "%level%"=="1" goto createconfig
 if "%level%"=="2" goto createsetting
+cls
 echo 输入错误，请重新输入!
 goto uselevel
 : createconfig
