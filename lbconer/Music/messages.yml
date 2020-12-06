@@ -1,0 +1,352 @@
+#
+# The following variables can be used in most messages that involve a punishment:
+#
+# Punishment specific variables
+# $id - The ID of the punishment in the database.
+# $type - Type of punishment - ban, mute, warn, kick.
+# $reason - the reason for the punishment
+# $executor - the moderator's name, or their display name (/nick) if this is enabled in the configuration
+# $executorUUID - the moderator's UUID
+# $permanent - whether this punishment is permanent
+# $ipban - whether this is an IP-ban
+# $silent - whether this punishment was executed silently (-s)
+# $active - whether this punishment is active
+#
+# Affected player specific variables
+# $playerDisplayName - player display name. If display names are not enabled in the configuration or if the player's display name is not available in the message's context, the player's regular name will be used instead.
+# $playerName - player name
+# $playerUUID - UUID of affected player
+# $playerIP - IP of affected player
+# $geoip - Country of affected player, requires GeoIP to be enabled in the configuration, won't work with imported bans
+#
+# Servers
+# These variables represent a server.
+# If the plugin is installed on Spigot, a server is represented by the "server_name" option in config.yml.
+# If the plugin is installed on BungeeCord, a server is represented by their name in the "servers" section in the proxy's config.yml.
+# $serverScope - the scope of the punishment (the server(s) it will affect)
+# $serverOrigin - the origin of the punishment (the server/subserver it was placed on)
+#
+# Dates
+# Example format: "2017-02-03", depends on time_format
+# $dateStart - date the punishment was placed
+# $dateEnd - date the punishment will expire, "forever" if permanent
+#
+# Durations
+# Example format: "20 days, 5 hours, 2 minutes". If permanent, "forever", if expired, "expired" (both are configurable).
+# $duration - time until expiry
+# $originalDuration - the full duration of the punishment.
+# $timeSince - time since placement
+#
+# Placeholders
+# These variables represent messages in this configuration (messages.yml)
+# $base - banned_message_base
+# $appealMessage - banned_message_appeal_message
+#
+# Global variables
+# $activeBans, $activeMutes, $activeWarnings - total number of global active punishments
+# $totalBans, $totalMutes, $totalWarnings - total number of global punishments (including inactive ones)
+#
+# Vault-specific variables
+# $playerPrefix - Vault chat prefix of affected player
+# $playerSuffix - Vault chat suffix of affected player
+# $executorPrefix - Vault chat prefix of executor
+# $executorSuffix - Vault chat suffix of executor
+# Any message can be disabled by setting it to "". Empty messages will not be sent by the plugin.
+#
+# Hover text requires permission "litebans.json.hover_text" to view, players lacking permission will see messages without hover text.
+# JSON examples:
+# broadcast_ban: '&e$bannedPlayer &chas been banned. {hoverText: &aHover text here!}'
+#
+# https://docs.oracle.com/javase/tutorial/i18n/format/simpleDateFormat.html
+# Example time format with hours + minutes:
+# time_format: 'dd/MM/yyyy HH:mm'
+time_format: yyyy-MM-dd
+history_time_format: yyyy-MM-dd
+banned_message_base: |
+  &b&l【管理系统】
+
+  &d&l你的账号已经被封禁了!&f
+
+  &a&l封禁日期: &e&l$dateStart
+  &a&l操作管理: &b&l$executor
+  &a&l封禁原因: &e&l$reason&f
+  &a&l申诉请进入QQ群!
+  &a&lQQ群:1076212930
+  &a&lBanID: &e&l$id
+  &a&l申诉时请截图!
+banned_message: |-
+  $base
+  &a&l解封剩余时间: $duration
+  $appealMessage
+banned_message_permanent: |-
+  $base
+  &a&l你已经被永久禁止加入此服务器!
+  $appealMessage
+banned_message_appeal_message: |-
+  &a&lQQ群:1076212930
+  &a&lBanID: &e&l$id
+  &a&l申诉时请截图!
+banned_message_geoip_blacklist: |-
+  &c你已被此服务器封禁&f
+  &a你的IP已被服务器列入黑名单: $geoip
+bungee_switch_banned: |-
+  &c你在 $serverScope 服务器 被封禁! Reason:
+  $reason
+permission_error: '&c你没有权限这么做!'
+muted: '&c你被管理员禁止发言了! (剩余： $duration)!'
+muted_permanent: '&c你已经永久被管理员禁止发言了!'
+notify:
+  banned_player_join: '&c$player&f 想加入游戏，但是被封禁了 ($duration)!'
+  banned_geoip_blacklist: '&c$player想加入游戏，但是被封禁了($geoip)!'
+error_no_reason_provided: '&c你必须设置理由!'
+error_no_sql_connection: '&cLiteBans没有连接数据库!'
+error_no_uuid_found: '&c没有找到玩家'
+internal_error: '&c一个严重错误导致不能执行此命令!'
+duration_limit_error: '&c允许设置的最高时间: $duration'
+warned_join: '&c管理员对你进行了警告:'
+warned_join_entry: |-
+  &a - 你收到了一个警告 &c$executor&4: &c$reason
+  &a(&c$timeSince 之前&4)
+command:
+  ban:
+    usage: '&c用法: $command [-s] <player> [时间] [原因]'
+    unban_usage: '&c用法: $command <player>'
+    example: '&c示范: $command player 7d [原因]'
+    silent_prefix: '&f[&7悄悄地封禁&f] '
+    broadcast_ban: '&a[通告] &c管理员$executor&c封禁了玩家$bannedPlayer&c，期限为永久，原因:&c$reason
+      {hoverText: &e&l封禁详情:\n&a&l封禁人: &c&l$executor\n&a&l被封禁人: &c&l$playerName\n&a&l封禁ID:
+      &c&l$id\n &a&l封禁原因: &a&l$reason}'
+    broadcast_tempban: '&a[通告] &c管理员$executor&c封禁了玩家$bannedPlayer&c，期限为$tempDuration&c，原因:&c$reason
+      {hoverText: &e&l封禁详情:\n&a&l封禁人: &c&l$executor\n&a&l被封禁人: &c&l$playerName\n&a&l封禁ID:
+      &c&l$id\n &a&l封禁原因: &a&l$reason\n&a&l时间: &c&l$tempDuration}'
+    broadcast_ip_ban: '&a[通告] &c管理员$executor&c封禁了玩家$bannedPlayer&c的IP地址，期限为永久，原因:&c$reason
+      {hoverText: &e&l封禁详情:\n&a&l封禁人: &c&l$executor\n&a&l被封禁人: &c&l$playerName\n&a&l封禁ID:
+      &c&l$id\n &a&l封禁原因: &a&l$reason}'
+    broadcast_temp_ip_ban: '&a[通告] &c管理员$executor&c封禁了玩家$bannedPlayer&c的IP地址，期限为$tempDuration&c，原因:&c$reason
+      {hoverText: &e&l封禁详情:\n&a&l封禁人: &c&l$executor\n&a&l被封禁人: &c&l$playerName\n&a&l封禁ID:
+      &c&l$id\n &a&l封禁原因: &a&l$reason\n&a&l时间: &c&l$tempDuration}'
+    broadcast_ip_ban_hidden: '[隐藏IP]'
+    broadcast_unban: '&a[通告] &c管理员$executor&c解封了玩家$bannedPlayer&c'
+    previous_ban_removed: '&a$bannedPlayer的封禁已经被删除了'
+    previous_ban_existing: '&c$bannedPlayer已经被封禁了,如果你有权限就可以重新封禁(覆盖原来的惩罚)'
+    unban_queue: '&6如果他们尝试重新连接服务器，那么就会被封禁'
+    error_no_spec: '&c时间错误!'
+    unban_fail: '&c他没有被封禁!'
+    no_override: '&c他已经被封禁了!'
+    exempt: '&c你不能封禁$player!'
+    cooldown: '&c你要等待$seconds后才能再次使用此命令!'
+    response: ''
+  mute:
+    usage: '&c用法: $command [-s] <player> [时间] [原因]'
+    unmute_usage: '&c用法: $command <player>'
+    example: '&c示范: $command Player 7d [原因]'
+    broadcast: '&a[通告] &c管理员$executor&c禁言了玩家$bannedPlayer&c，期限为永久，原因:&c$reason {hoverText:
+      &e&l禁言详情:\n&a&l禁言人: &c&l$executor\n&a&l被禁言人: &c&l$playerName\n&a&l禁言ID: &c&l$id\n
+      &a&l禁言原因: &a&l$reason}'
+    broadcast_tempmute: '&a[通告] &c管理员$executor&c禁言了玩家$bannedPlayer&c，期限为$tempDuration&c，原因:&c$reason
+      {hoverText: &e&l禁言详情:\n&a&l禁言人: &c&l$executor\n&a&l被禁言人: &c&l$playerName\n&a&l禁言ID:
+      &c&l$id\n &a&l禁言原因: &a&l$reason\n&a&l时间: &c&l$tempDuration}'
+    broadcast_ip_mute: '&a$executor &f禁言了 &a$playerName 的 IP &f因为 &a$reason&f {hoverText:
+      &e&l禁言详情:\n&a&l禁言人: &c&l$executor\n&a&l被禁言人: &c&l$playerName\n&a&l禁言ID: &c&l$id\n
+      &a&l禁言原因: &a&l$reason}'
+    broadcast_temp_ip_mute: '&a$executor &f临时禁言了IP:&a$mutedIP &f剩余时长 $tempDuration
+      原因:&a$reason&f {hoverText: &e&l禁言详情:\n&a&l禁言人: &c&l$executor\n&a&l被禁言人: &c&l$playerName\n&a&l禁言ID:
+      &c&l$id\n &a&l禁言原因: &a&l$reason\n&a&l时间: &c&l$tempDuration}'
+    message: |-
+      &a你被$executor&a禁言，因为 &a$reason&a.
+      &a时间:$duration.
+    message_permanent: |-
+      &c你被$executor&c永久禁言,因为&c'&a$reason&c'.
+      &c此禁言不会消失.
+    broadcast_unmute: '&a[通告] &c管理员$executor&c解除了玩家$bannedPlayer&c的禁言'
+    unmute_fail: '&c他没有被禁言!'
+    no_override: '&c他已经被禁言了!'
+    previous_mute_removed: '&a$mutedPlayer的禁言被删除.'
+    previous_mute_existing: '&c$mutedPlayer已经被禁言了,如果你有权限可以覆盖上次禁言'
+    exempt: '&c你不能禁言$player!'
+    notification: '&c$mutedPlayer想说话,但是被禁言了.'
+    error_not_enabled: '&c配置中未启用禁言功能!'
+    response: ''
+  warn:
+    usage: '&c用法: $command [-s] <玩家> [原因]'
+    unwarn_usage: '&c用法: $command <玩家>'
+    example: '&c示范: $command player [原因]'
+    broadcast: '&a[通告] &c$管理员$executor&c警告了玩家$warnedPlayer&c，原因:&c$reason {hoverText:
+      &e&l警告详情:\n&a&l警告人: &c&l$executor\n&a&l被警告人: &c&l$playerName\n&a&l警告ID: &c&l$id\n
+      &a&l警告原因: &a&l$reason}'
+    message: |-
+      &e管理员 $executor&e 警告了你, &c理由:&a$reason.
+      &a此警告将在7天后过期.
+    list_entry: ' \- 被$executor警告: ''$reason&f'''
+    unwarn_response: '&a$player的最后一次警告被移除.'
+    unwarn_fail: '&c他没有被警告'
+    exempt: '&c你不能警告$player!'
+    cooldown: '&c你需要等待$seconds秒才能再次使用此命令'
+    response: ''
+  history:
+    usage: '&c$command <玩家> [entries=10]'
+    start: '&a$target的历史 (数量: $limit):'
+    ban_entry: |-
+      &a -- [&f$timeSince之前&a] --&f
+      &c $name被$executor封禁: '&a$reason&f'
+    mute_entry: |-
+      &a -- [&f$timeSince之前&a] --&f
+      &c $name被$executor禁言: '&a$reason&f'
+    warn_entry: |-
+      &a -- [&f$timeSince之前&a] --&f
+      &c $name被$executor警告: '&a$reason&f'
+    kick_entry: |-
+      &a -- [&f$timeSince之前&a] --&f
+      &c $name被$executor踢出: '&a$reason&f'
+    unban_entry: '&a$name被$executor 解除封禁.'
+    unmute_entry: '&a$name被$executor 解除禁言.'
+    active_suffix: '&f [&c生效中&f]'
+    expired_suffix: '&f [&8已失效&f]'
+    active_suffix_temp: |-
+      &f [&c生效中&f]
+      &f在$duration后失效.
+    error_no_history: '&c没有历史记录.'
+    error_no_user: '&c没有找到用户.'
+  warnings:
+    usage: '&c$command <玩家>'
+    start: '&a目前$target生效的警告:'
+  prunehistory:
+    usage: '&c$command <玩家> [持续时间]'
+    message: '&a历史被裁剪'
+  staffhistory:
+    usage: '&c$command <玩家> [项目数=10]'
+    start: '&a$target的历史 (数量: $limit):'
+  staffrollback:
+    usage: '&c$command <玩家> [持续时间]'
+    message: '&a回滚完成, 移除项数: $amount'
+  banlist:
+    start: '&f=== &a页面 &6$page&a/&6$total&f ==='
+  iphistory:
+    usage: '&c$command <player> [entries=10]'
+    start: '&a$target登陆历史记录 (数量: $limit):'
+    entry: '&a - [&f$date&a]&f $name&a:&f $ip'
+    error_no_history: '&c没有找到历史.'
+  dupeip:
+    usage: '&c$command <玩家>'
+    start: '&f扫描&a$name&f 在&a$ip&f. &f[&a在线&f] [&7离线&f] [&c被封禁&f]'
+    start_no_ip: '&f扫描 &7$name&f. &f[&a在线&f] [&7离线&f] [&c被封禁&f]'
+    separator: '&f, '
+    online: '&a'
+    offline: '&7'
+    banned: '&c'
+    muted: '&6'
+    multiple_addresses: '[$num addresses]'
+  ipreport:
+    start: '&f扫描&a$num&f 在线玩家.. [&a在线&f] [&7离线&f] [&c被封禁&f]'
+    entry: '&f$player&a: $result'
+  checkban:
+    usage: '&c$command <玩家>'
+    no_ban: '&c玩家没有被封禁!'
+    banned: |-
+      &a玩家&f[&a$target&f]&a被封禁:
+      &a$executor封禁
+      &a原因: $reason&a
+      &a开始日期: $dateStart
+      &a结束日期: $dateEnd ($duration)
+      &a在&6&a$serverOrigin&a被封禁, 服务器: &6$serverScope
+      &aIP封禁: $ipban, 悄悄封禁: $silent, 永久: $permanent
+  checkmute:
+    usage: '&c$command <玩家>'
+    no_mute: '&c玩家没有被禁言!'
+    muted: |-
+      &a玩家 f[&a$target&f]&a被禁言:
+      &a$executor禁言
+      &a原因: $reason&r
+      &a禁言开始日期: $dateStart
+      &a禁言结束日期: $dateEnd ($duration)
+      &a在&6$serverOrigin&a被禁言, 服务器: &6$serverScope
+      &aIP禁言: $ipban, 悄悄禁言: $silent, 永久: $permanent
+  lastuuid:
+    usage: '&c$command <player|IP>'
+    message: '&f&a$name&b的最后一次访问的UUID&f: &a$uuid'
+  geoip:
+    usage: '&c$command <player|IP>'
+    message: '&a$target&f来自: &a$result'
+    error_disabled: '&cGeoIP支持没有在配置文件中启用!'
+    error_unavailable: '&cGeoIP支持当前不可用，是否已下载？'
+    error_not_found: '&c找不到$target的GeoIP信息.'
+  lockdown:
+    usage: '&c$command <原因> | $command end'
+    message: '&c服务器被锁定 (原因: "$reason&c")'
+    stopped: '&a锁定已解除.'
+    kick_message: |-
+      &c服务器锁定已开启，请稍后再试.
+      &c原因: $reason
+    kick_message_global: |-
+      &c网络锁定已开启，请稍后再试.
+      &c原因: $reason
+    error_not_active: '&c未启用锁定!'
+  kick:
+    usage: '&c$command <player> [原因]'
+    no_match: '&c错误: &4玩家没有被找到.'
+    kick_requested: '&6玩家$player 不在线. 踢出失败.'
+    message: '&c&l你被$executor&c&l踢出服务器，理由: $reason'
+    message_no_reason: '&c&l你被$executor&c&l踢出服务器.'
+    response: '&6$player被踢出.'
+    broadcast: '&4[通告] &c玩家$player&c被管理员$executor&c踢出服务器，原因:&c$reason'
+    broadcast_no_reason: '&4[通告] &c玩家$player&c被管理员$executor&c踢出服务器，原因:&c无'
+    exempt: '&c你不能踢出$player!'
+  togglechat:
+    toggle_off: '&a聊天关闭'
+    toggle_on: '&a聊天开启'
+  clearchat:
+    broadcast: '&a聊天被$executor清除.'
+  mutechat:
+    response: '&c服务器聊天已关闭'
+    broadcast_disabled: '&c服务器聊天被$executor关闭.'
+    broadcast_enabled: '&a服务器聊天被$executor开启.'
+  litebans:
+    reload_success: '&aLiteBans重新加载成功.'
+    reload_fail_connect: '&aLitebans重新加载. &c连接数据库失败.'
+    reload_fail: '&c重新加载失败.'
+    reload_fail_config: |-
+      &c[LiteBans] &4config.yml文件崩了.
+      &c请检查后台.
+    reload_fail_messages: |-
+      &c[LiteBans] &4messages.yml文件崩了.
+      &c请检查后台.
+    add_history_usage: '&c$command addhistory <name> <UUID> <IP>'
+    add_history: '&a历史记录已增加.'
+    fix_history: '&a修复历史 $table...'
+    fix_history_result: '&a增加 $amount 项.'
+    fix_history_offline_uuids: '&c$amount不是正版玩家'
+    import_usage: '&c$command import start'
+    import_start: '&a导入来自$db的信息, 这需要一点时间...'
+    import_finish: '&a导入成功. $bans 个封禁, $ipbans个IP封禁.'
+    import_finish_litebans: '&a成功导入. 增加 $amount项到数据库.'
+    import_fail: '&c导入失败  :('
+    import_unsupported: '&cImporting from ''$name'' is not supported yet!'
+    sqlexec_success: '&aSQL语句执行成功'
+    sqlexec_failure: '&c执行失败.'
+duration:
+  expired: 失效
+  forever: 永久
+  year: 年
+  years: 年
+  month: 月
+  months: 月
+  week: 周
+  weeks: 周
+  day: 天
+  days: 天
+  hour: 小时
+  hours: 小时
+  minute: 分钟
+  minutes: 分钟
+  second: 秒
+  seconds: 秒
+  format: '%d %s'
+  separator: ', '
+strings:
+  global: 全体
+  'null': 未找到
+  'true': 是
+  'false': 否
+error_console_only: '&c这个命令只能在服务器执行.'
+default_ban_reason: 违反规则
+default_mute_reason: 违反规则
