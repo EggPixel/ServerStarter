@@ -1,0 +1,10 @@
+{
+  "homepage": "https://eggpixel.github.io/",
+  "promos": {
+    "1.15.2-latest": "2.0.5",
+    "1.15.2-recommended": "2.0.5"
+  },
+  "1.15.2": {
+    "2.0.5": "update通道变为github.增加了绿宝石枪"
+  }
+}
