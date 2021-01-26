@@ -1,9 +1,9 @@
 @echo off
-title ÏÂÔØBungeeCordÖĞ...
+title ä¸‹è½½BungeeCordä¸­...
 color af
-echo Ê¹ÓÃ±¾³ÌĞòÇ°£¬Çë×¢Òâ:
-echo ±¾³ÌĞò½öÓÃÓÚÏÂÔØBungeeCord,ÇÒ²»Ò»¶¨ÏÂÔØ³É¹¦,»òÕß²»ÊÇ×îĞÂ°æ±¾
-echo ÇëÈ·±£´ËbatÔÚ·şÎñÆ÷ÎÄ¼ş¼ĞÖĞ
+echo ä½¿ç”¨æœ¬ç¨‹åºå‰ï¼Œè¯·æ³¨æ„:
+echo æœ¬ç¨‹åºä»…ç”¨äºä¸‹è½½BungeeCord,ä¸”ä¸ä¸€å®šä¸‹è½½æˆåŠŸ,æˆ–è€…ä¸æ˜¯æœ€æ–°ç‰ˆæœ¬
+echo è¯·ç¡®ä¿æ­¤batåœ¨æœåŠ¡å™¨æ–‡ä»¶å¤¹ä¸­
 if exist *.* (if exist *.bat (echo Starting Download...) else md BungeeCord & cd BungeeCord)
 set downloaddir=%cd%\Server.jar
 md modules
@@ -13,20 +13,21 @@ set cmd_list=%cd%\modules\cmd_list.jar
 set cmd_send=%cd%\modules\cmd_send.jar
 set cmd_server=%cd%\modules\cmd_server.jar
 set reconnect_yaml=%cd%\modules\reconnect_yaml.jar
-bitsadmin /transfer "·şÎñ¶ËÏÂÔØÖĞ£¬Çë²»Òª¹Ø±Õ" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar" "%downloaddir%"
-bitsadmin /transfer "·şÎñ¶ËÏÂÔØÖĞ£¬Çë²»Òª¹Ø±Õ" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/cmd-alert/target/cmd_alert.jar" "%cmd_alert%"
-bitsadmin /transfer "·şÎñ¶ËÏÂÔØÖĞ£¬Çë²»Òª¹Ø±Õ" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/cmd-find/target/cmd_find.jar" "%cmd_find%"
-bitsadmin /transfer "·şÎñ¶ËÏÂÔØÖĞ£¬Çë²»Òª¹Ø±Õ" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/cmd-list/target/cmd_list.jar" "%cmd_list%"
-bitsadmin /transfer "·şÎñ¶ËÏÂÔØÖĞ£¬Çë²»Òª¹Ø±Õ" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/cmd-send/target/cmd_send.jar" "%cmd_send%"
-bitsadmin /transfer "·şÎñ¶ËÏÂÔØÖĞ£¬Çë²»Òª¹Ø±Õ" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/cmd-server/target/cmd_server.jar" "%cmd_server%"
-bitsadmin /transfer "·şÎñ¶ËÏÂÔØÖĞ£¬Çë²»Òª¹Ø±Õ" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/reconnect-yaml/target/reconnect_yaml.jar" "%reconnect_yaml%"
+bitsadmin /transfer "æœåŠ¡ç«¯ä¸‹è½½ä¸­ï¼Œè¯·ä¸è¦å…³é—­" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar" "%downloaddir%"
+bitsadmin /transfer "æœåŠ¡ç«¯ä¸‹è½½ä¸­ï¼Œè¯·ä¸è¦å…³é—­" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/cmd-alert/target/cmd_alert.jar" "%cmd_alert%"
+bitsadmin /transfer "æœåŠ¡ç«¯ä¸‹è½½ä¸­ï¼Œè¯·ä¸è¦å…³é—­" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/cmd-find/target/cmd_find.jar" "%cmd_find%"
+bitsadmin /transfer "æœåŠ¡ç«¯ä¸‹è½½ä¸­ï¼Œè¯·ä¸è¦å…³é—­" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/cmd-list/target/cmd_list.jar" "%cmd_list%"
+bitsadmin /transfer "æœåŠ¡ç«¯ä¸‹è½½ä¸­ï¼Œè¯·ä¸è¦å…³é—­" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/cmd-send/target/cmd_send.jar" "%cmd_send%"
+bitsadmin /transfer "æœåŠ¡ç«¯ä¸‹è½½ä¸­ï¼Œè¯·ä¸è¦å…³é—­" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/cmd-server/target/cmd_server.jar" "%cmd_server%"
+bitsadmin /transfer "æœåŠ¡ç«¯ä¸‹è½½ä¸­ï¼Œè¯·ä¸è¦å…³é—­" /download /priority normal "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/module/reconnect-yaml/target/reconnect_yaml.jar" "%reconnect_yaml%"
 cd %downloaddir%
-echo. > µãÎÒÆô¶¯·şÎñÆ÷.bat
-mshta http://bathome.net/s/hta/ type('µãÎÒÆô¶¯·şÎñÆ÷.bat') >µãÎÒÆô¶¯·şÎñÆ÷.bat
-echo @echo off > µãÎÒÆô¶¯·şÎñÆ÷.bat
-echo title EggPixel.github.io»ñÈ¡Æô¶¯Æ÷ >> µãÎÒÆô¶¯·şÎñÆ÷.bat
-echo : start >> µãÎÒÆô¶¯·şÎñÆ÷.bat
-echo java -Xms1G -Xmx1G -jar Server.jar >> µãÎÒÆô¶¯·şÎñÆ÷.bat
-echo goto start >> µãÎÒÆô¶¯·şÎñÆ÷.bat
-echo ³ÌĞòÔËĞĞÍê±Ï!
+echo. > ç‚¹æˆ‘å¯åŠ¨æœåŠ¡å™¨.bat
+mshta http://bathome.net/s/hta/ type('ç‚¹æˆ‘å¯åŠ¨æœåŠ¡å™¨.bat') >ç‚¹æˆ‘å¯åŠ¨æœåŠ¡å™¨.bat
+echo @echo off > ç‚¹æˆ‘å¯åŠ¨æœåŠ¡å™¨.bat
+echo title EggPixel.github.ioè·å–å¯åŠ¨å™¨ >> ç‚¹æˆ‘å¯åŠ¨æœåŠ¡å™¨.bat
+echo : start >> ç‚¹æˆ‘å¯åŠ¨æœåŠ¡å™¨.bat
+echo java -Xms1G -Xmx1G -jar Server.jar >> ç‚¹æˆ‘å¯åŠ¨æœåŠ¡å™¨.bat
+echo goto start >> ç‚¹æˆ‘å¯åŠ¨æœåŠ¡å™¨.bat
+echo ç¨‹åºè¿è¡Œå®Œæ¯•!
 pause & exit
+rem ByEmeraldsEgg
