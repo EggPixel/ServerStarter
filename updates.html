@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>更新日志</title>
+		<link rel="icon" href="./1.ico">
+		<style>
+			.juzhong {
+				text-align:center;
+				background: #FFC0CB;
+				font-family:century;
+			}
+			h1 { 
+				color: #4CAF50;
+				font-size: 80px;
+				font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu
+			}
+			warn { 
+				color: #DC143C;
+				font-size: 80px;
+				font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu
+			}
+			warn_small { 
+				color: #DC143C;
+				font-size: 30px;
+				font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu
+			}
+			h2 {
+				color: #4CAF50;
+				font-size: 30px;
+				font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu
+			}
+			a:link {
+				text-decoration:none;
+				color:#4CAF50;
+			}
+			a:visited {
+				text-decoration:none;
+				color:#4CAF50;
+			}
+			a:hover {
+				text-decoration:underline;
+				color:#4CAF50;
+			}
+			a:active {
+				text-decoration:none;
+				color:#4CAF50;
+			}
+	</style>
+	</head>
+	<body class="juzhong">
+		<script type="text/javascript">
+			window.onload = function (){
+				var url = "./update/updates.json";
+				var request = new XMLHttpRequest();
+				request.open("get", url);
+				request.send(null);
+				request.onload = function (){
+					if (request.status == 200) {
+						var back = JSON.parse(request.responseText);
+						//console.log(back);
+						var ol = document.getElementById('ol');
+						back.person.map(person => {
+							var li = document.createElement("li");
+							li.innerHTML = "b版本:${person.name} 内容:${person.image}";
+							ol.append(li);
+						})
+					}
+				}
+			}
+		</script>
+		<h1>下载即将开始</h1>
+	</body>
+</html>
