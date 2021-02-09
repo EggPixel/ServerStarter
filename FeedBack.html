@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>FeedBack Bug反馈</title>
+		<link rel="icon" href="./1.ico">
+		<!--<link rel="stylesheet" href="https://eggpixel.github.io/grey.css"> -->
+		<style>
+			.juzhong {
+				text-align:center;
+				background: #FFC0CB;
+				font-family:century;
+			}
+			h1 { 
+				color: #4CAF50;
+				font-size: 80px;
+				font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu
+			}
+			warn { 
+				color: #DC143C;
+				font-size: 80px;
+				font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu
+			}
+			warn_small { 
+				color: #DC143C;
+				font-size: 30px;
+				font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu
+			}
+			h2 {
+				color: #4CAF50;
+				font-size: 30px;
+				font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu
+			}
+			a:link {
+				text-decoration:none;
+				color:#4CAF50;
+			}
+			a:visited {
+				text-decoration:none;
+				color:#4CAF50;
+			}
+			a:hover {
+				text-decoration:underline;
+				color:#4CAF50;
+			}
+			a:active {
+				text-decoration:none;
+				color:#4CAF50;
+			}
+	</style>
+	</head>
+	<body class="juzhong">
+		<script type="text/javascript">
+			<!--
+			function Request(strName){
+				var strHref = location.href;
+				var intPos = strHref.indexOf("?");
+				var strRight = strHref.substr(intPos + 1);
+				var arrTmp = strRight.split("&");
+				for(var i = 0; i < arrTmp.length; i++) {
+					var arrTemp = arrTmp[i].split("=");
+					if(arrTemp[0].toUpperCase() == strName.toUpperCase()) return arrTemp[1];
+				}
+					return "";
+			}
+			function Main(){
+				var linked=Request("bug");
+				if(bugs=="")
+					console.log("<warn>请求错误!若您确保请求无任何非法字符，请联系网站管理员</warn>");
+				else
+					document.write ("<h2><a href="https://github.com/EggPixel/EggPixel.github.io/issues/new">点我提交bug!</a></h2>");
+			}
+			function Error(){
+				var linkedd=Request("link");
+				if(linkedd=="")
+					document.write ("<warn>请求错误!</warn><warn_small>若您确保请求无任何非法字符，请联系网站管理员</warn_small>");
+			}
+			Error();
+			//-->
+		</script>
+    <h1>Bug反馈</h1>
+    <script>
+        Main();
+    </script>
+	</body>
+</html>
